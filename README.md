@@ -15,7 +15,7 @@ Parchment for Inform 7
 Site Generator
 --------------
 
-For those who aren't using Inform 7 (or who can no longer recompile their storyfile), the [Parchment Site Generator](https://iplayif.com/api/sitegen) allows you to make a single file version of Parchment. This supports any of the formats supported by Parchment (Adrift 4, Glulx, Hugo, TADS 2/3, Z-Code).
+For those who aren't using Inform 7 (or who can no longer recompile their storyfile), the [Parchment Site Generator](https://iplayif.com/api/sitegen) allows you to make a single file version of Parchment. This supports any of the formats supported by Parchment (Adrift 4/5, Glulx, Hugo, TADS 2/3, Z-Code).
 
 Single File Build
 -----------------
@@ -38,7 +38,7 @@ Hugo    | [hugoif/hugo-unix](https://github.com/hugoif/hugo-unix) | [BSD-2-Claus
 Iosevka | [be5invis/Iosevka](https://github.com/be5invis/Iosevka) | [OFL](https://github.com/be5invis/Iosevka/blob/master/LICENSE.md)
 jQuery  | [jquery/jquery](https://github.com/jquery/jquery) | [MIT](https://github.com/jquery/jquery/blob/main/LICENSE.txt)
 RemGlk-rs | [curiousdannii/remglk-rs](https://github.com/curiousdannii/remglk-rs) | [MIT](https://github.com/curiousdannii/remglk-rs/blob/master/LICENSE)
-Scare   | [garglk/garglk](https://github.com/garglk/garglk) | [GPL-2.0](https://github.com/garglk/garglk/blob/master/terps/scare/COPYING)
+Scarier | [garglk/garglk](https://github.com/garglk/garglk) | [GPL-2.0](https://github.com/garglk/garglk/blob/master/terps/scarier/COPYING)
 TADS    | [tads-intfic/tads-runner](https://github.com/tads-intfic/tads-runner) | [GPL-2.0](https://github.com/tads-intfic/tads-runner/blob/master/COPYING)
 
 Building Instructions

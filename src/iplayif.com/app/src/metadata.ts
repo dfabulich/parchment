@@ -97,6 +97,7 @@ export class MetadataCache {
 
 export const parchment_formats: Record<string, string> = {
     adrift: 'adrift4',
+    'blorbed adrift': 'adrift5',
     'blorbed glulx': 'glulx',
     'blorbed zcode': 'zcode',
     glulx: 'glulx',

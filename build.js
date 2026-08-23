@@ -85,7 +85,7 @@ if (projects.includes('lectrote')) {
             git: 'node_modules/emglken/build/git.*',
             glulxe: 'node_modules/emglken/build/glulxe.*',
             hugo: 'node_modules/emglken/build/hugo.*',
-            scare: 'node_modules/emglken/build/scare.*',
+            scarier: 'node_modules/emglken/build/scarier.*',
             tads: 'node_modules/emglken/build/tads.*',
         },
         format: 'cjs',
@@ -121,7 +121,7 @@ if (projects.includes('web')) {
             hugo: 'node_modules/emglken/build/hugo.*',
             ie: 'src/common/ie.js',
             //quixe: 'src/common/quixe.js',
-            scare: 'node_modules/emglken/build/scare.*',
+            scarier: 'node_modules/emglken/build/scarier.*',
             tads: 'node_modules/emglken/build/tads.*',
             waiting: 'src/common/waiting.gif',
             web: 'src/common/launcher.ts',
@@ -218,9 +218,9 @@ for (const project of projects_to_build) {
 
 if (servemode) {
     const context = await esbuild.context({})
-    let {host, port} = await context.serve({
+    let {hosts, port} = await context.serve({
         port: 8080,
         servedir: '.',
     })
-    console.log(`Serving on http://${host}:${port}`)
+    console.log(`Serving on http://${hosts[0]}:${port}`)
 }

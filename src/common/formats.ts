@@ -48,36 +48,26 @@ export const formats: Format[] = [
         extensions: /\.taf/i,
         engines: [
             {
-                id: 'scare',
-                load: ['scare.js', 'scare.wasm'],
+                id: 'scarier',
+                load: ['scarier.js', 'scarier.wasm'],
                 start: generic_emglken_vm,
             },
         ],
     },
 
-    /*{
+    {
         id: 'adrift5',
         blorbable: true,
-        extensions: /\.(blb|blorb)/i,
+        // Identified from Blorb Exec chunk type ADRI (not by extension)
+        extensions: /\.adrift5$/i,
         engines: [
             {
-                id: 'frankendrift',
-                load: ['frankendrift.js'],
-                start: (options, requires) => {
-                    const [file_data, FrankenDrift] = requires
-
-                    const vm = new FrankenDrift.FrankenDrift()
-                    const vm_options = Object.assign({}, options, {
-                        vm,
-                        Glk,
-                    })
-
-                    vm.init(file_data, vm_options)
-                    Glk.init(vm_options)
-                },
+                id: 'scarier',
+                load: ['scarier.js', 'scarier.wasm'],
+                start: generic_emglken_vm,
             },
         ],
-    },*/
+    },
 
     {
         id: 'hugo',
@@ -192,6 +182,7 @@ export function find_format(format?: string | null, path?: string) {
  * Must be passed a Blorb instance */
 export function identify_blorb_storyfile_format(blorb: Blorb) {
     const blorb_chunks: Record<string, string> = {
+        ADRI: 'adrift5',
         GLUL: 'glulx',
         ZCOD: 'zcode',
     }

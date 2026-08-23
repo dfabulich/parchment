@@ -21,7 +21,8 @@ import {flatten_query, type SiteOptions} from './common.js'
 import {get_metadata} from './metadata.js'
 
 const format_terp_files: Record<string, string[]> = {
-    adrift4: ['scare.wasm', 'scare.js'],
+    adrift4: ['scarier.wasm', 'scarier.js'],
+    adrift5: ['scarier.wasm', 'scarier.js'],
     glulx: ['glulxe.wasm', 'glulxe.js'],
     hugo: ['hugo.wasm', 'hugo.js'],
     tads: ['tads.wasm', 'tads.js'],
@@ -49,7 +50,7 @@ export default class SiteGenerator {
     </head>
     <body>
         <h1>Parchment Site Generator</h1>
-        <p>Upload a Z-Code, Glulx, TADS, Hugo, or ADRIFT 4 file to generate a self-contained HTML file, suitable for distribution or offline play.</p>
+        <p>Upload a Z-Code, Glulx, TADS, Hugo, or ADRIFT 4/5 file to generate a self-contained HTML file, suitable for distribution or offline play.</p>
         <form method=post enctype="multipart/form-data">
             <p><input type="file" name="story_file">
             <p><input type="checkbox" id="localStorage_isolate" name="localStorage_isolate" checked><label for="localStorage_isolate">Enable localStorage isolation (highly recommended if you will be uploading this to Itch.io!)</label>
@@ -67,13 +68,6 @@ export default class SiteGenerator {
 
         if (!metadata?.format) {
             ctx.throw(400, 'Unsupported file type')
-        }
-
-        if (metadata.format === 'adrift4') {
-            const adrift_version = Number(metadata.ifid.split('-')[1])
-            if (adrift_version > 400) {
-                ctx.throw(400, 'This is an Adrift 5 game file. This converter only supports Adrift 4 and earlier.')
-            }
         }
 
         const terp_files = format_terp_files[metadata.format]

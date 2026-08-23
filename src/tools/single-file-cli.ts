@@ -48,7 +48,7 @@ const base_options: Options = {
 const presets: Record<string, Options> = {
     dist: {
         //terps: ['hugo', 'quixe', 'scare', 'tads', 'zvm'],
-        terps: ['bocfel', 'glulxe', 'hugo', 'scare', 'tads'],
+        terps: ['bocfel', 'glulxe', 'hugo', 'scarier', 'tads'],
     },
     frankendrift: {
         single_file: 0,
@@ -68,7 +68,11 @@ const formats: Record<string, BasicFormat> = {
     },
     adrift4: {
         extensions: /\.taf/i,
-        engine: 'scare',
+        engine: 'scarier',
+    },
+    adrift5: {
+        extensions: /\.adrift5$/i,
+        engine: 'scarier',
     },
     hugo: {
         extensions: /\.hex/i,
@@ -137,7 +141,7 @@ const interpreter_files: Record<string, string[]> = {
     glulxe: ['glulxe.wasm', 'glulxe.js'],
     hugo: ['hugo.wasm', 'hugo.js'],
     quixe: ['quixe.js'],
-    scare: ['scare.wasm', 'scare.js'],
+    scarier: ['scarier.wasm', 'scarier.js'],
     tads: ['tads.wasm', 'tads.js'],
     zvm: ['zvm.js'],
 }
