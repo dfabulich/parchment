@@ -64,6 +64,7 @@ only MP3 sounds are supported
             story: {
                 filename,
                 resource_map: '[RESOURCEMAP]',
+                title: '[TITLE]',
                 url,
             },
         }

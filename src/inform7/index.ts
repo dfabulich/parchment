@@ -9,12 +9,13 @@ https://github.com/curiousdannii/parchment
 
 */
 
-import {Blorb, fetch_resource, FileView, utf8encoder} from '../upstream/asyncglk/src/index-browser.js'
+import {Blorb, fetch_resource, FileView, is_iOS, utf8encoder} from '../upstream/asyncglk/src/index-browser.js'
 import {default as Bocfel} from 'emglken/build/bocfel-noz6.js'
 import {default as Glulxe} from 'emglken/build/glulxe.js'
 import type {EmglkenEngine, EmglkenEngineOptions, StoryOptions} from '../common/interface.js'
 import {get_default_options, get_query_options} from '../common/options.js'
 
+import LoadingPane from '../common/ui/LoadingPane.svelte'
 import './inform7.css'
 
 interface Inform7ParchmentOptions extends EmglkenEngineOptions {
@@ -35,6 +36,37 @@ async function launch() {
 
     // Update the Dialog storage version
     await options.Dialog.init(options)
+
+    // Break out of an iframe
+    const is_in_iframe = window.self !== window.top
+    if (is_in_iframe && !options.play_in_iframe) {
+        const cover_image_url = $('#loadingpane img').attr('src')!
+        $('#loadingpane').remove()
+        const gameport = document.getElementById('gameport')!
+
+        let new_tab: WindowProxy | undefined
+        const load = () => {
+            // If we've already opened a new tab, focus it (except in iOS where it doesn't work)
+            if (new_tab && !new_tab.closed && !is_iOS) {
+                new_tab.focus()
+            }
+            else {
+                new_tab = window.open(document.URL)!
+            }
+            // It would be nice to exit Itch's maximised mode here, but I can't work out how to safely do so on both mobile and desktop
+            return
+        }
+
+        new LoadingPane({
+            target: gameport,
+            props: {
+                cover_image_url,
+                play: load,
+                title: options.story.title!,
+            },
+        })
+        return
+    }
 
     // Discriminate
     const format = (/\.(zblorb|zlb|z3|z4|z5|z8)$/.test(options.story.filename!)) ? 'zcode' : 'glulx'
