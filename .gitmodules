@@ -1,9 +1,9 @@
 [submodule "src/upstream/asyncglk"]
 	path = src/upstream/asyncglk
-	url = ../../curiousdannii/asyncglk.git
+	url = ../../dfabulich/asyncglk.git
 [submodule "src/upstream/emglken"]
 	path = src/upstream/emglken
-	url = ../../curiousdannii/emglken.git
+	url = ../../dfabulich/emglken.git
 [submodule "src/upstream/glkote"]
 	path = src/upstream/glkote
 	url = ../../curiousdannii/glkote.git
